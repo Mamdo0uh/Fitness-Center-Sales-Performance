@@ -1,0 +1,78 @@
+table Product
+	lineageTag: 35e77e27-cac5-4247-b23d-78af8006c433
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ce14419-62dd-48f9-a79c-571b2bf5947d
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSubcategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 95410179-36b8-4c7c-a3c8-d084669dceac
+		summarizeBy: count
+		sourceColumn: ProductSubcategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: 98a053b8-4a9f-451d-9a5a-a654370c9069
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Size
+		dataType: string
+		lineageTag: af242d26-0fe6-456d-a0d1-9758b5ce5fc1
+		summarizeBy: none
+		sourceColumn: Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column Detail
+		dataType: string
+		lineageTag: 2f46d139-a505-49ab-9370-f8b4c4aec26f
+		summarizeBy: none
+		sourceColumn: Detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubcategoryName
+		dataType: string
+		lineageTag: 1f5177af-accf-44c1-a0c7-a2a9af1c2967
+		summarizeBy: none
+		sourceColumn: SubcategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryName
+		dataType: string
+		lineageTag: 6f86cfe5-12ee-4428-9740-ea8a5ae3eeef
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\elmnshawy\Desktop\DataX\Project one\Product.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductKey", Int64.Type}, {"ProductSubcategoryKey", Int64.Type}, {"ProductName", type text}, {"Size", type text}, {"Detail", type text}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"ProductSubcategoryKey"}, ProductSubcategory, {"ProductSubcategoryKey"}, "ProductSubcategory", JoinKind.LeftOuter),
+				    #"Expanded ProductSubcategory" = Table.ExpandTableColumn(#"Merged Queries", "ProductSubcategory", {"SubcategoryName", "CategoryName"}, {"SubcategoryName", "CategoryName"})
+				in
+				    #"Expanded ProductSubcategory"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

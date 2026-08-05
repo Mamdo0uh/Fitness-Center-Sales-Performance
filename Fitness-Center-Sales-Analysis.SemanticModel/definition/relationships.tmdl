@@ -1,0 +1,44 @@
+relationship c6de80fe-5f22-4d98-b1ef-b4d0f012a379
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SalesReturns.ReturnDate
+	toColumn: LocalDateTable_3c87e54c-318c-4460-998b-5ee330537f4a.Date
+
+relationship AutoDetected_930021fa-3fa6-463e-9e4e-57166ee0df2b
+	fromColumn: SalesReturns.CustomerKey
+	toColumn: Customers.CustomerKey
+
+relationship AutoDetected_f0201b5f-97c8-46ea-b9b5-84ec486d5f08
+	fromColumn: SalesDetails.ProductKey
+	toColumn: Product.ProductKey
+
+relationship AutoDetected_f4417fd9-3342-4ced-a611-380bb5d5cfd2
+	fromColumn: SalesReturns.ProductKey
+	toColumn: Product.ProductKey
+
+relationship df37da30-46ba-4a4c-acfe-e6b190bab0ab
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SalesDetails.DueDate
+	toColumn: LocalDateTable_7e96eb74-b9a9-43e1-b2f9-c11399cfb732.Date
+
+relationship 5e34be04-caa8-4139-9959-941569e30069
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SalesDetails.ShipDate
+	toColumn: LocalDateTable_91aec3c3-1ce2-4d85-8af0-870a28da43a9.Date
+
+relationship AutoDetected_06220f17-59d0-4403-bada-ec24f6ac798c
+	fromColumn: SalesDetails.CustomerKey
+	toColumn: Customers.CustomerKey
+
+relationship 2e208c4e-41e4-4691-819a-24f8067419b7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_5da4c00d-bfc6-4ff8-9dc4-d58178fa47ee.Date
+
+relationship 20e6364a-48c2-8716-656b-9aa42902d4b1
+	fromColumn: SalesDetails.OrderDate
+	toColumn: Calendar.Date
+
+relationship 3ad49a45-ec24-9d9f-5518-aa9f9153eb25
+	fromColumn: SalesReturns.OrderDate
+	toColumn: Calendar.Date
+
