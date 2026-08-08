@@ -43,6 +43,97 @@ table Calculations
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure Varfromly(Revenue) = [Revenue] - [Revenue ly]
+		lineageTag: fc2f777a-629f-494d-845a-e71044f238d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Var%(Revenue) = DIVIDE([Varfromly(Revenue)], [Revenue ly])
+		lineageTag: 38537228-b58f-4949-9a54-77deeeac23aa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Revenue Showvar' =
+			
+			IF (
+			    AND (
+			        ISFILTERED ( 'Calendar'[year] ),
+			        SELECTEDVALUE ( 'Calendar'[year] ) <> 2010
+			    ),
+			    FORMAT ( [Var%(Revenue)], "$#,0" ) & "  |  "
+			        & FORMAT ( [Var%(Revenue)], "#0.0%" ),
+			    ""
+			)
+		lineageTag: 6c19b78f-fda0-4039-bf98-089e84fc5c3e
+
+	measure ArrowRevenue =
+			
+			IF (
+			    ISFILTERED ( 'Calendar'[year] ) && [Varfromly(Revenue)] > 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			    UNICHAR ( 9650 ),
+			    IF (
+			        ISFILTERED ( 'Calendar'[year] ) && [Varfromly(Revenue)] < 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			        UNICHAR ( 9660 ),
+			        ""
+			    )
+			)
+		lineageTag: 692e0666-ad37-470f-8e1a-c9ec5d8682ba
+
+	measure 'ARROW Color (REVENUE)' = IF([Varfromly(Revenue)] > 0, 1, 2)
+		formatString: 0
+		lineageTag: 09833f0d-7432-4bce-9f2d-005b31c893cf
+
+	measure 'profit ly' = ```
+			
+			CALCULATE ( 
+			    [Profit], 
+			    SAMEPERIODLASTYEAR ( 'Calendar'[Date]) 
+			)
+			```
+		lineageTag: aba0fbf7-8ba7-4f77-9610-98ea188a94fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Varfromly(profit) = [Profit] - [profit ly]
+		lineageTag: f97718c3-0552-4431-8be6-7920810920b0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Var%(profit) = DIVIDE([Varfromly(profit)], [profit ly])
+		lineageTag: 96ab00ba-3b44-436e-a0f6-e2810c781c96
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'profit Showvar' =
+			
+			IF (
+			    AND (
+			        ISFILTERED ( 'Calendar'[year] ),
+			        SELECTEDVALUE ( 'Calendar'[year] ) <> 2010
+			    ),
+			    FORMAT ( [Var%(profit)], "$#,0" ) & "  |  "
+			        & FORMAT ( [Var%(profit)], "#0.0%" ),
+			    ""
+			)
+		lineageTag: 8ebb5fea-6ad7-4e5f-94f0-da70f2ce7c8d
+
+	measure Arrowprofit =
+			
+			IF (
+			    ISFILTERED ( 'Calendar'[year] ) && [Varfromly(profit)] > 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			    UNICHAR ( 9650 ),
+			    IF (
+			        ISFILTERED ( 'Calendar'[year] ) && [Varfromly(profit)] < 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			        UNICHAR ( 9660 ),
+			        ""
+			    )
+			)
+		lineageTag: bc09e6ea-2e65-4efe-a36a-78ee008cd7a6
+
+	measure 'ARROW Color (profit)' = IF([Varfromly(Revenue)] > 0, 1, 2)
+		formatString: 0
+		lineageTag: cede5dc3-f5d6-4939-9323-1b089706195d
+
 	column Column1
 		dataType: string
 		isHidden

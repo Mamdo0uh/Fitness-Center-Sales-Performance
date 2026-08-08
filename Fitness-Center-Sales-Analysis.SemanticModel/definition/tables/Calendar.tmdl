@@ -2,7 +2,7 @@ table Calendar
 	lineageTag: aad3db7b-bcc1-4fa7-b1c0-5db56febdb66
 
 	column Date
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 14b40df1-c0a3-4a7a-aa53-f4b988d1b936
 		summarizeBy: none
 		isNameInferred
@@ -16,6 +16,41 @@ table Calendar
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+	column year = ```
+			YEAR('Calendar'[Date]) 
+			```
+		formatString: 0
+		lineageTag: 94e25fb2-5414-4cd8-97b5-ff5c78d94252
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column month = ```
+			MONTH('Calendar'[Date]) 
+			```
+		formatString: 0
+		lineageTag: 32480786-7c50-4294-a37b-c7eac8140ea7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name = ```
+			FORMAT('Calendar'[Date],"mmm") 
+			```
+		lineageTag: b56e49fa-a07b-4b33-934c-2e85408883e3
+		summarizeBy: none
+		sortByColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter = ```
+			"Q"&QUARTER('Calendar'[Date]) 
+			```
+		lineageTag: 007ca804-a159-405a-8a2c-986b718e69a3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
 
 	partition Calendar = calculated
 		mode: import
