@@ -49,9 +49,8 @@ table Calculations
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Var%(Revenue) = DIVIDE([Varfromly(Revenue)], [Revenue ly])
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 38537228-b58f-4949-9a54-77deeeac23aa
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Revenue Showvar' =
 			
@@ -79,7 +78,7 @@ table Calculations
 			)
 		lineageTag: 692e0666-ad37-470f-8e1a-c9ec5d8682ba
 
-	measure 'ARROW Color (REVENUE)' = IF([Varfromly(Revenue)] > 0, 1, 2)
+	measure 'ARROW Color (cost)' = IF([Varfromly(cost)] > 0, 1, 2)
 		formatString: 0
 		lineageTag: 09833f0d-7432-4bce-9f2d-005b31c893cf
 
@@ -100,9 +99,8 @@ table Calculations
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Var%(profit) = DIVIDE([Varfromly(profit)], [profit ly])
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 96ab00ba-3b44-436e-a0f6-e2810c781c96
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'profit Showvar' =
 			
@@ -130,9 +128,194 @@ table Calculations
 			)
 		lineageTag: bc09e6ea-2e65-4efe-a36a-78ee008cd7a6
 
-	measure 'ARROW Color (profit)' = IF([Varfromly(Revenue)] > 0, 1, 2)
+	measure 'ARROW Color (qty)' = IF([Varfromly(qty)] > 0, 1, 2)
 		formatString: 0
 		lineageTag: cede5dc3-f5d6-4939-9323-1b089706195d
+
+	measure 'qty ly' = ```
+			
+			CALCULATE ( 
+			    [QTY], 
+			    SAMEPERIODLASTYEAR ( 'Calendar'[Date]) 
+			)
+			```
+		formatString: 0
+		lineageTag: 721d3da3-d036-499b-a6d5-2ad52ca17931
+
+	measure Varfromly(qty) = [QTY] - [qty ly]
+		formatString: 0
+		lineageTag: 510f75ab-2e0b-4499-b87e-3d2599bced38
+
+	measure Var%(qty) = DIVIDE([Varfromly(qty)], [qty ly])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 712dc3f9-b14f-4f9f-83f1-6663c07672ab
+
+	measure 'qty Showvar' =
+			
+			IF (
+			    AND (
+			        ISFILTERED ( 'Calendar'[year] ),
+			        SELECTEDVALUE ( 'Calendar'[year] ) <> 2010
+			    ),
+			    FORMAT ( [Var%(qty)], "$#,0" ) & "  |  "
+			        & FORMAT ( [Var%(qty)], "#0.0%" ),
+			    ""
+			)
+		lineageTag: 660df01d-2350-449b-8a87-fb7b7a48cbc4
+
+	measure Arrowqty =
+			
+			IF (
+			    ISFILTERED ( 'Calendar'[year] ) && [Varfromly(qty)] > 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			    UNICHAR ( 9650 ),
+			    IF (
+			        ISFILTERED ( 'Calendar'[year] ) && [Varfromly(qty)] < 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			        UNICHAR ( 9660 ),
+			        ""
+			    )
+			)
+		lineageTag: f01ea120-848a-4bf6-aff6-8c6a6c9eb9fe
+
+	measure 'cost ly' = ```
+			
+			CALCULATE ( 
+			    [Cost], 
+			    SAMEPERIODLASTYEAR ( 'Calendar'[Date]) 
+			)
+			```
+		lineageTag: 2eb09caa-0fe1-4c1f-8dac-13c63fd5830c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Varfromly(cost) = [Cost] - [cost ly]
+		lineageTag: 4a77573d-4511-44f3-972c-c25df94ac010
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Var%(cost) = DIVIDE([Varfromly(cost)], [cost ly])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0e598f97-639d-42c4-acf9-14f1d2a6587c
+
+	measure 'cost Showvar' =
+			
+			IF (
+			    AND (
+			        ISFILTERED ( 'Calendar'[year] ),
+			        SELECTEDVALUE ( 'Calendar'[year] ) <> 2010
+			    ),
+			    FORMAT ( [Var%(cost)], "$#,0" ) & "  |  "
+			        & FORMAT ( [Var%(cost)], "#0.0%" ),
+			    ""
+			)
+		lineageTag: f9e76936-3610-4d81-baab-29cfe8a6321f
+
+	measure Arrowcost =
+			
+			IF (
+			    ISFILTERED ( 'Calendar'[year] ) && [Varfromly(cost)] > 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			    UNICHAR ( 9650 ),
+			    IF (
+			        ISFILTERED ( 'Calendar'[year] ) && [Varfromly(cost)] < 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			        UNICHAR ( 9660 ),
+			        ""
+			    )
+			)
+		lineageTag: ca779792-6b5f-4ff6-ab87-4e19ee89cd8d
+
+	measure '#Customers ly' = ```
+			CALCULATE ( 
+			    [#Customers], 
+			    SAMEPERIODLASTYEAR ( 'Calendar'[Date]) 
+			)
+			```
+		formatString: 0
+		lineageTag: 814e24fa-4c81-4a5c-b925-175ffc795ee9
+
+	measure Varfromly(#Customers) = [#Customers] - [#Customers ly]
+		formatString: 0
+		lineageTag: 897275fc-9d84-4eb5-97af-a260b6591b24
+
+	measure Var%(#Customers) = DIVIDE([Varfromly(#Customers)], [#Customers ly])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2f4688dd-4bd0-4501-8dd9-0fd527209605
+
+	measure '#Cusromers Showvar' =
+			
+			IF (
+			    AND (
+			        ISFILTERED ( 'Calendar'[year] ),
+			        SELECTEDVALUE ( 'Calendar'[year] ) <> 2010
+			    ),
+			    FORMAT ( [Var%(#Customers)], "$#,0" ) & "  |  "
+			        & FORMAT ( [Var%(#Customers)], "#0.0%" ),
+			    ""
+			)
+		lineageTag: 06f918f2-5987-43c8-bcf6-184d77120828
+
+	measure Arrow_#Customers =
+			
+			IF (
+			    ISFILTERED ( 'Calendar'[year] ) && [Varfromly(#Customers)] > 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			    UNICHAR ( 9650 ),
+			    IF (
+			        ISFILTERED ( 'Calendar'[year] ) && [Varfromly(#Customers)] < 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			        UNICHAR ( 9660 ),
+			        ""
+			    )
+			)
+		lineageTag: 13bb734e-dcc6-433f-bc62-44aeec23a4dd
+
+	measure 'ARROW Color (#Customers)' = IF([Varfromly(#Customers)] > 0, 1, 2)
+		formatString: 0
+		lineageTag: c2697c51-29a2-460e-93cb-57177d393009
+
+	measure '#Orders ly' = ```
+			
+			CALCULATE ( 
+			    [#Orders], 
+			    SAMEPERIODLASTYEAR ( 'Calendar'[Date]) 
+			)
+			```
+		formatString: 0
+		lineageTag: b3e3bc2c-1837-41f6-8fa7-1bd6b4791f15
+
+	measure Varfromly(#Orders) = [#Orders] - [#Orders ly]
+		formatString: 0
+		lineageTag: 905bd37b-234d-4fd5-8fcb-285776c090a5
+
+	measure Var%(#Orders) = DIVIDE([Varfromly(#Orders)], [#Orders ly])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 98615ea1-ff37-4e6a-ad9b-e090c55ca8ae
+
+	measure '#Orders Showvar' =
+			
+			IF (
+			    AND (
+			        ISFILTERED ( 'Calendar'[year] ),
+			        SELECTEDVALUE ( 'Calendar'[year] ) <> 2010
+			    ),
+			    FORMAT ( [Var%(#Orders)], "$#,0" ) & "  |  "
+			        & FORMAT ( [Var%(#Orders)], "#0.0%" ),
+			    ""
+			)
+		lineageTag: 081b59b8-a482-477b-a457-d8d394b92f2e
+
+	measure Arrow_#Orders =
+			
+			IF (
+			    ISFILTERED ( 'Calendar'[year] ) && [Varfromly(#Orders)] > 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			    UNICHAR ( 9650 ),
+			    IF (
+			        ISFILTERED ( 'Calendar'[year] ) && [Varfromly(#Orders)] < 0 && SELECTEDVALUE ( 'Calendar'[year] ) <> 2010,
+			        UNICHAR ( 9660 ),
+			        ""
+			    )
+			)
+		lineageTag: dbd74990-3962-4859-8528-b6a90b8afbd7
+
+	measure 'ARROW Color (#Orders)' = IF([Varfromly(#Orders)] > 0, 1, 2)
+		formatString: 0
+		lineageTag: 3d4d12fe-4ecc-48a8-93af-559b7e639336
 
 	column Column1
 		dataType: string
