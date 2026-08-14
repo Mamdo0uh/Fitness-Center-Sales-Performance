@@ -1,5 +1,5 @@
 {
-  "name": "CY25SU12",
+  "name": "CY26SU07",
   "dataColors": [
     "#118DFF",
     "#12239E",
@@ -127,6 +127,13 @@
             "titleWrap": true
           }
         ],
+        "spacing": [
+          {
+            "spaceAboveSubtitle": 2,
+            "spaceAboveDivider": 4,
+            "spaceAbovePlotArea": 16
+          }
+        ],
         "lineStyles": [
           {
             "strokeWidth": 3
@@ -193,6 +200,7 @@
         "bubbles": [
           {
             "bubbleSize": -10,
+            "preventOverflow": true,
             "markerRangeType": "auto"
           }
         ],
@@ -230,6 +238,13 @@
           {
             "matchSeriesInterpolation": true
           }
+        ],
+        "seriesLabels": [
+          {
+            "enableBackground": true,
+            "leaderLines": true,
+            "seriesMatchColor": true
+          }
         ]
       }
     },
@@ -249,13 +264,24 @@
           {
             "bubbleRadius": 8,
             "minBubbleRadius": 8,
-            "maxRadius": 40
+            "maxRadius": 28,
+            "clusteredBubbleRadius": 16
           }
         ],
         "barChart": [
           {
             "barHeight": 3,
             "thickness": 3
+          }
+        ],
+        "mapControls": [
+          {
+            "showSelectionControl": true
+          }
+        ],
+        "commonDataOptions": [
+          {
+            "unselectedTransparency": 40
           }
         ]
       }
@@ -535,6 +561,15 @@
         ]
       }
     },
+    "listSlicer": {
+      "*": {
+        "layout": [
+          {
+            "showFixedSize": true
+          }
+        ]
+      }
+    },
     "slicer": {
       "*": {
         "general": [
@@ -696,6 +731,13 @@
             "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
+        ],
+        "seriesLabels": [
+          {
+            "enableBackground": true,
+            "leaderLines": true,
+            "seriesMatchColor": true
+          }
         ]
       }
     },
@@ -710,6 +752,13 @@
           {
             "backgroundTransparency": 0,
             "gridLineType": "inner"
+          }
+        ],
+        "seriesLabels": [
+          {
+            "enableBackground": true,
+            "leaderLines": true,
+            "seriesMatchColor": true
           }
         ]
       }
@@ -726,6 +775,14 @@
             "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
+        ],
+        "seriesLabels": [
+          {
+            "backgroundTransparency": 0.9,
+            "enableBackground": true,
+            "leaderLines": true,
+            "seriesMatchColor": true
+          }
         ]
       }
     },
@@ -740,6 +797,14 @@
           {
             "backgroundTransparency": 0,
             "gridLineType": "inner"
+          }
+        ],
+        "seriesLabels": [
+          {
+            "backgroundTransparency": 0.9,
+            "enableBackground": true,
+            "leaderLines": true,
+            "seriesMatchColor": true
           }
         ]
       }
@@ -775,6 +840,13 @@
           {
             "backgroundTransparency": 0,
             "gridLineType": "inner"
+          }
+        ],
+        "seriesLabels": [
+          {
+            "enableBackground": true,
+            "leaderLines": true,
+            "seriesMatchColor": true
           }
         ]
       }

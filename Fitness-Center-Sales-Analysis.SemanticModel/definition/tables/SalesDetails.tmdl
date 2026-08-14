@@ -195,7 +195,7 @@ table SalesDetails
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\elmnshawy\Desktop\DataX\Project one\SalesDetails.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("D:\DataX\Project one\SalesDetails.xlsx"), null, true),
 				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
 				    #"Merged Queries" = Table.NestedJoin(#"Promoted Headers", {"SalesOrderNumber"}, SalesHeader, {"SalesOrderNumber"}, "SalesHeader", JoinKind.LeftOuter),

@@ -317,6 +317,12 @@ table Calculations
 		formatString: 0
 		lineageTag: 3d4d12fe-4ecc-48a8-93af-559b7e639336
 
+	measure GM% = ```
+			DIVIDE([Profit],[Revenue]) 
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 84982749-e1b1-4d82-afe0-0478c2fe22f3
+
 	column Column1
 		dataType: string
 		isHidden

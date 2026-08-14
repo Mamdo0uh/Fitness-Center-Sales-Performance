@@ -63,7 +63,7 @@ table Product
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\elmnshawy\Desktop\DataX\Project one\Product.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("D:\DataX\Project one\Product.xlsx"), null, true),
 				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductKey", Int64.Type}, {"ProductSubcategoryKey", Int64.Type}, {"ProductName", type text}, {"Size", type text}, {"Detail", type text}}),

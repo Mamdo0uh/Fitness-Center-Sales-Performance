@@ -96,7 +96,7 @@ table SalesReturns
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\elmnshawy\Desktop\DataX\Project one\SalesReturns.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("D:\DataX\Project one\SalesReturns.xlsx"), null, true),
 				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ReturnKey", Int64.Type}, {"ReturnDate", type date}, {"OrderDate", type date}, {"SalesOrderNumber", type text}, {"CustomerKey", Int64.Type}, {"ProductKey", Int64.Type}, {"ReturnQuantity", Int64.Type}, {"UnitPrice", type number}, {"ReturnAmount", type number}})
