@@ -25,7 +25,7 @@ table Calculations
 		lineageTag: 50df40fc-b5e7-4db0-b5cd-0e4dcaea1e8b
 
 	measure #Orders = DISTINCTCOUNT(SalesDetails[SalesOrderNumber])
-		formatString: 0
+		formatString: 0.000
 		lineageTag: c071ef24-3494-44eb-a989-94d6c09f734f
 
 	measure #Customers = DISTINCTCOUNT(SalesDetails[CustomerKey])
@@ -322,6 +322,21 @@ table Calculations
 			```
 		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 84982749-e1b1-4d82-afe0-0478c2fe22f3
+
+	measure AOV = ```
+			DIVIDE([Revenue],[#Orders]) 
+			```
+		lineageTag: cd6561c6-57c7-4022-bd61-e365c57abfb1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'First year' = YEAR(CALCULATE(MIN(SalesDetails[OrderDate])))
+		formatString: 0
+		lineageTag: 77755ee2-a9f8-4637-a545-51b3cccdb82a
+
+	measure 'Inactive Customers' = COUNTBLANK(Customers[First_order])
+		formatString: 0
+		lineageTag: a42d21b1-321c-4fed-9732-14313ce3b7bf
 
 	column Column1
 		dataType: string

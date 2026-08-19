@@ -118,6 +118,20 @@ table Customers
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'no.orders' = [#Orders]
+		formatString: 0
+		lineageTag: 76ecb7df-613e-4f94-aca7-cdd0cbff4e6e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column First_order = [First year]
+		formatString: 0
+		lineageTag: 64417a6e-3ce2-469c-adc7-fb015c132c23
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Customers = m
 		mode: import
 		source =
