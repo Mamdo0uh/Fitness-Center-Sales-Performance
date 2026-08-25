@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "3dd0c828a71e4526eca9",
+  "name": "40edb262ab10ac78f720",
   "position": {
     "x": 5.76,
-    "y": 540,
-    "z": 11000,
+    "y": 458.45373134328355,
+    "z": 12002,
     "height": 72,
     "width": 214.56,
-    "tabOrder": 11000
+    "tabOrder": 12002
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Customers"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "Continent"
+                  "Property": "SubcategoryName"
                 }
               },
-              "queryRef": "Customers.Continent",
-              "nativeQueryRef": "Continent",
+              "queryRef": "Product.SubcategoryName",
+              "nativeQueryRef": "SubcategoryName",
               "active": true
             }
           ]

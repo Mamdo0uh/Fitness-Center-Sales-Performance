@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "bafc0d4e387f3ef17efa",
+  "name": "ca68eeb77f8b2a77ecee",
   "position": {
-    "x": 5.76,
-    "y": 408.24,
-    "z": 10000,
-    "height": 72,
-    "width": 214.56,
-    "tabOrder": 10000
+    "x": 250.56,
+    "y": 469.44,
+    "z": 9000,
+    "height": 240.48000000000002,
+    "width": 508.32,
+    "tabOrder": 9000
   },
   "visual": {
-    "visualType": "slicer",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
           "projections": [
             {
               "field": {
@@ -23,50 +23,97 @@
                       "Entity": "Calendar"
                     }
                   },
-                  "Property": "year"
+                  "Property": "month_name"
                 }
               },
-              "queryRef": "Calendar.year",
-              "nativeQueryRef": "year",
+              "queryRef": "Calendar.month_name",
+              "nativeQueryRef": "month_name",
               "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Return_Measures "
+                    }
+                  },
+                  "Property": "#Customers returns"
+                }
+              },
+              "queryRef": "Return_Measures .#Customers returns",
+              "nativeQueryRef": "#Customers returns"
             }
           ]
         }
       }
     },
     "objects": {
-      "data": [
+      "lineStyles": [
         {
           "properties": {
-            "mode": {
+            "strokeLineJoin": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'round'"
+                }
+              }
+            },
+            "lineChartType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'smooth'"
                 }
               }
             }
           }
         }
       ],
-      "selectionIcon": [
+      "valueAxis": [
         {
           "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
           }
         }
       ],
-      "header": [
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
         {
           "properties": {
             "show": {
@@ -79,59 +126,17 @@
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "italic": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "items": [
-        {
-          "properties": {
-            "bold": {
-              "expr": {
-                "Literal": {
                   "Value": "true"
                 }
               }
             },
-            "fontColor": {
+            "color": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 1,
                       "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "background": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -145,44 +150,17 @@
       "title": [
         {
           "properties": {
-            "titleWrap": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "'#Customers have returns by month'"
                 }
               }
             }
           }
         }
       ],
-      "spacing": [
-        {
-          "properties": {
-            "spaceAbovePlotArea": {
-              "expr": {
-                "Literal": {
-                  "Value": "16D"
-                }
-              }
-            },
-            "spaceAboveDivider": {
-              "expr": {
-                "Literal": {
-                  "Value": "4D"
-                }
-              }
-            },
-            "spaceAboveSubtitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "background": [
+      "border": [
         {
           "properties": {
             "show": {
@@ -196,48 +174,31 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#770CD8'"
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.6
                     }
                   }
                 }
               }
             },
-            "transparency": {
+            "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "15D"
                 }
               }
             }
           }
         }
       ],
-      "border": [
+      "dropShadow": [
         {
           "properties": {
-            "width": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "foreground": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
+                  "Value": "true"
                 }
               }
             }

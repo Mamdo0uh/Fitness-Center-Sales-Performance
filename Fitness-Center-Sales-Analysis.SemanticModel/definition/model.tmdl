@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Customers","Geography","SalesDetails","Product","Productcosthistory","ProductSubcategory","Region","SalesHeader","SalesReturns","Calculations"]
+annotation PBI_QueryOrder = ["Customers","Geography","SalesDetails","Product","Productcosthistory","ProductSubcategory","Region","SalesHeader","SalesReturns","Calculations","Return Measures","Return Measures ","Return_Measures "]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -24,6 +24,7 @@ ref table LocalDateTable_91aec3c3-1ce2-4d85-8af0-870a28da43a9
 ref table Calendar
 ref table LocalDateTable_5da4c00d-bfc6-4ff8-9dc4-d58178fa47ee
 ref table Calculations
+ref table 'Return_Measures '
 
 ref cultureInfo en-US
 

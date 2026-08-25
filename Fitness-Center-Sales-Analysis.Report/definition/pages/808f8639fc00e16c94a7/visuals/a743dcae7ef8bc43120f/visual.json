@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "3dd0c828a71e4526eca9",
+  "name": "a743dcae7ef8bc43120f",
   "position": {
-    "x": 5.76,
-    "y": 540,
-    "z": 11000,
+    "x": 1.44,
+    "y": 590.4,
+    "z": 12003,
     "height": 72,
     "width": 214.56,
-    "tabOrder": 11000
+    "tabOrder": 12003
   },
   "visual": {
     "visualType": "slicer",
@@ -23,11 +23,11 @@
                       "Entity": "Customers"
                     }
                   },
-                  "Property": "Continent"
+                  "Property": "CountryName"
                 }
               },
-              "queryRef": "Customers.Continent",
-              "nativeQueryRef": "Continent",
+              "queryRef": "Customers.CountryName",
+              "nativeQueryRef": "CountryName",
               "active": true
             }
           ]
