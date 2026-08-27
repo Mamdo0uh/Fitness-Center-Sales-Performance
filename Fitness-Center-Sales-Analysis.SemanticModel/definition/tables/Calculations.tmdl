@@ -338,6 +338,111 @@ table Calculations
 		formatString: 0
 		lineageTag: a42d21b1-321c-4fed-9732-14313ce3b7bf
 
+	measure 'Profit Color' = IF([Varfromly(Profit)]>0,1,2)
+		formatString: 0
+		displayFolder: Time Analysis Measures
+		lineageTag: ed9513bf-cde1-4830-9080-35231bf9c072
+
+	measure lygm = CALCULATE([GM%], SAMEPERIODLASTYEAR('Calendar'[Date]))
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Time Analysis Measures
+		lineageTag: f0fe5fb7-3d11-4201-8f6d-97ba6c2a206f
+
+	measure vargm = [GM%] - [lygm]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Time Analysis Measures
+		lineageTag: 579369d4-c9c6-4e2e-90bb-94583dd3c803
+
+	measure GMARROW = IF([vargm]>0,UNICHAR(9650),UNICHAR(9660))
+		displayFolder: Time Analysis Measures
+		lineageTag: 435263fe-f29a-43a2-a90d-2a494c1b8bf7
+
+	measure GMARROWCOLOR = IF([vargm]>0,1,2)
+		formatString: 0
+		displayFolder: Time Analysis Measures
+		lineageTag: 9ed0364b-2aa1-4a2e-8928-6f3353f2a32c
+
+	measure COST% = DIVIDE([Cost], [Revenue])
+		displayFolder: Time Analysis Measures
+		lineageTag: b8b19cca-76f2-4ce7-9137-822f75509796
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure COST%LY = CALCULATE([COST%],SAMEPERIODLASTYEAR('Calendar'[Date]))
+		displayFolder: Time Analysis Measures
+		lineageTag: 2879e6ec-c891-4c77-8eb0-0fedd52b50e1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure VARCOST% = [COST%] - [COST%LY]
+		displayFolder: Time Analysis Measures
+		lineageTag: 12374c0d-4ac6-4aec-964f-093c11b6b4e7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure COST%ARROW = IF([Var%(Cost)]>0,UNICHAR(9650),UNICHAR(9660))
+		displayFolder: Time Analysis Measures
+		lineageTag: 4981cf27-b6a1-40be-a4b6-d30c8860c277
+
+	measure COST%ARROWCOLOR = IF([VARCOST%]>0,1,2)
+		formatString: 0
+		displayFolder: Time Analysis Measures
+		lineageTag: 36158222-be80-4dca-8196-6fd6a1be3926
+
+	measure 'REVENUE YTD' = CALCULATE([Revenue], DATESYTD('Calendar'[Date]))
+		displayFolder: Time Analysis Measures
+		lineageTag: 14e7e543-aee8-4218-bd69-8ccb1413ed8d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'COST YTD' = CALCULATE([Cost], DATESYTD('Calendar'[Date]))
+		displayFolder: Time Analysis Measures
+		lineageTag: f5df2c57-41ee-4126-941e-aec8f0b32b3b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PROFIT YTD' = CALCULATE([Profit], DATESYTD('Calendar'[Date]))
+		displayFolder: Time Analysis Measures
+		lineageTag: fa1a91d6-448a-4c47-83b7-308614afba81
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Revenue' = CALCULATE([Revenue], DATEADD('Calendar'[Date], -1, MONTH))
+		displayFolder: Time Analysis Measures
+		lineageTag: f129559f-1e04-497d-a82d-1c881d4e4cca
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Profit' = CALCULATE([Profit], DATEADD('Calendar'[Date], -1, MONTH))
+		displayFolder: Time Analysis Measures
+		lineageTag: de5d9f8c-b3a3-434e-976b-056b363a83a1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM COST' = CALCULATE([Cost], DATEADD('Calendar'[Date], -1, MONTH))
+		displayFolder: Time Analysis Measures
+		lineageTag: 880ad325-f0ba-4db7-a4e7-aee32fe973f1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure varfromlm%(revenue) = DIVIDE([Revenue] - [MoM Revenue], [MoM Revenue])
+		displayFolder: Time Analysis Measures
+		lineageTag: 0740ec78-d160-475a-9c2e-3a41ca8f4ae3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure varfromlm%(profit) = DIVIDE([Profit] - [MoM Profit], [MoM Profit])
+		displayFolder: Time Analysis Measures
+		lineageTag: 059cae65-086d-4d34-ab1c-89b54c43abd1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure varfromlm%(cost) = DIVIDE([Cost] - [MoM COST], [MoM COST])
+		displayFolder: Time Analysis Measures
+		lineageTag: 772b16aa-541a-4f1b-b454-cdd43259d95d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Column1
 		dataType: string
 		isHidden
