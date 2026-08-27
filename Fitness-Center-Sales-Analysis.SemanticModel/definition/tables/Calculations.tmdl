@@ -443,6 +443,81 @@ table Calculations
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure YTD =
+			
+			IF (
+			    SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 0,
+			    [REVENUE YTD],
+			    IF (
+			        SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 1,
+			        [Profit YTD],
+			        [Cost YTD]
+			    )
+			)
+		displayFolder: Time Analysis Measures
+		lineageTag: 2e4c02ec-e15b-4b2e-a33b-40173feb59c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Title' =
+			
+			IF (
+			    SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 0,
+			    "Revenue YTD",
+			    IF (
+			        SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 1,
+			        "Profit YTD",
+			        "Cost YTD"
+			    )
+			)
+		displayFolder: Time Analysis Measures
+		lineageTag: 0973db64-a561-4b3b-b509-d88107d9aff1
+
+	measure 'YTD Title(MONTHS)' =
+			
+			IF (
+			    SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 0,
+			    "Revenue by Month",
+			    IF (
+			        SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 1,
+			        "Profit by Month",
+			        "Cost by Month"
+			    )
+			)
+		displayFolder: Time Analysis Measures
+		lineageTag: 9069c3b8-af71-44a4-bdd8-b894f7b984d9
+
+	measure mom =
+			
+			IF (
+			    SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 0,
+			    [MoM Revenue],
+			    IF (
+			        SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 1,
+			        [MoM Profit],
+			        [MoM cost]
+			    )
+			)
+		displayFolder: Time Analysis Measures
+		lineageTag: 96b7dacf-01c6-43de-aaab-52275151a096
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'VAR FROM SAME TIME LY' =
+			
+			IF (
+			    SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 0,
+			    [Var%(Revenue)],
+			    IF (
+			        SELECTEDVALUE ( 'TIME ANALYSIS'[TIME ANALYSIS Order] ) = 1,
+			        [Var%(profit)],
+			        [Var%(cost)]
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Time Analysis Measures
+		lineageTag: 6bad5fd2-7968-45df-bdb5-570b15777f66
+
 	column Column1
 		dataType: string
 		isHidden

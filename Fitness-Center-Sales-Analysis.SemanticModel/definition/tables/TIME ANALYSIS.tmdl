@@ -1,0 +1,49 @@
+table 'TIME ANALYSIS'
+	lineageTag: 247d35fe-ec6e-473a-a6e1-8c21c852415c
+
+	column 'TIME ANALYSIS'
+		lineageTag: 89ed4cfa-0587-4980-a3d1-4692ee894174
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'TIME ANALYSIS Order'
+
+		relatedColumnDetails
+			groupByColumn: 'TIME ANALYSIS Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIME ANALYSIS Fields'
+		isHidden
+		lineageTag: e89ddb3e-aac9-4ba6-9ec4-586cf16e7880
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'TIME ANALYSIS Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIME ANALYSIS Order'
+		isHidden
+		formatString: 0
+		lineageTag: 478361a1-79f5-4ea3-9566-901df99e7204
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'TIME ANALYSIS' = calculated
+		mode: import
+		source =
+				{
+				    ("Revenue", NAMEOF('Calculations'[Revenue]), 0),
+				    ("Profit", NAMEOF('Calculations'[Profit]), 1),
+				    ("Cost", NAMEOF('Calculations'[Cost]), 2)
+				}
+
+	annotation PBI_Id = 6dbd3fdc3fd04a629e881a4ab5bf8225
+
