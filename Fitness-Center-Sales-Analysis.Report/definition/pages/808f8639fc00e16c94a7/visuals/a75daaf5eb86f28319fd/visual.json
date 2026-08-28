@@ -23,7 +23,7 @@
                       "Entity": "Return_Measures "
                     }
                   },
-                  "Property": "%returns ORDERS"
+                  "Property": "%Returns Orders"
                 }
               },
               "queryRef": "Return_Measures .%returns ORDERS",
@@ -42,7 +42,7 @@
                     "Entity": "Return_Measures "
                   }
                 },
-                "Property": "%returns ORDERS"
+                "Property": "%Returns Orders"
               }
             },
             "direction": "Descending"

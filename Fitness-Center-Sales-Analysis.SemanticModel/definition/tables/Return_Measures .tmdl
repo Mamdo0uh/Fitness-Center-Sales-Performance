@@ -21,7 +21,7 @@ table 'Return_Measures '
 		formatString: 0
 		lineageTag: cfcbf2be-ccb2-418f-88f3-9e30297c1348
 
-	measure '%returns Amount' = DIVIDE([Returns Amount], [Revenue])
+	measure '%Returns Amount' = DIVIDE([Returns Amount], [Revenue])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 623f13e2-3885-40d9-a5fd-79e54b823508
 
@@ -29,7 +29,7 @@ table 'Return_Measures '
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 4721499d-f572-4a28-8ab4-82ec66912cac
 
-	measure '%returns ORDERS' = DIVIDE([#orders Returns], [#Orders])
+	measure '%Returns Orders' = DIVIDE([#orders Returns], [#Orders])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 3b86ba54-6154-4c7c-b320-525e45932efd
 

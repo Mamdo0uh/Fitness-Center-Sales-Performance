@@ -191,6 +191,12 @@ table SalesDetails
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column 'Price Category' = IF('SalesDetails'[UnitPrice]<1000,"0-1000",IF('SalesDetails'[UnitPrice]<=2000,"1000-2000",">2000"))
+		lineageTag: d0f38592-d8d4-4295-a006-2adb587d2816
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition SalesDetails = m
 		mode: import
 		source =

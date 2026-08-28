@@ -4,9 +4,8 @@ table Calculations
 	measure Revenue = ```
 			SUM(SalesDetails[Sales_amount]) 
 			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: 8f3f021a-0c27-4d23-be38-3f587d62f39c
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Cost = ```
 			SUMX(SalesDetails,SalesDetails[OrderQuantity]*SalesDetails[UnitCost]) 
@@ -16,9 +15,8 @@ table Calculations
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Profit = [Revenue] - [Cost]
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: cc88f020-2d4f-4b62-afde-6e41ab851a06
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure QTY = SUM(SalesDetails[OrderQuantity])
 		formatString: 0
@@ -363,10 +361,9 @@ table Calculations
 		lineageTag: 9ed0364b-2aa1-4a2e-8928-6f3353f2a32c
 
 	measure COST% = DIVIDE([Cost], [Revenue])
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Time Analysis Measures
 		lineageTag: b8b19cca-76f2-4ce7-9137-822f75509796
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure COST%LY = CALCULATE([COST%],SAMEPERIODLASTYEAR('Calendar'[Date]))
 		displayFolder: Time Analysis Measures
