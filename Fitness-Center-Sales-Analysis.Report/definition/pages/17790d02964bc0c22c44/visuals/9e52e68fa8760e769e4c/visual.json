@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "f0a3fc6eca1bfa34d548",
+  "name": "9e52e68fa8760e769e4c",
   "position": {
-    "x": 252,
-    "y": 50.4,
-    "z": 1000,
-    "height": 135.36,
-    "width": 296.64,
-    "tabOrder": 1000
+    "x": 649.648,
+    "y": 51.84,
+    "z": 3000,
+    "height": 109,
+    "width": 195,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,12 +23,11 @@
                       "Entity": "Calculations"
                     }
                   },
-                  "Property": "Revenue"
+                  "Property": "varfromlyaov"
                 }
               },
-              "queryRef": "Calculations.Revenue",
-              "nativeQueryRef": "Revenue",
-              "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+              "queryRef": "Calculations.varfromlyaov",
+              "nativeQueryRef": "varfromlyaov"
             }
           ]
         }
@@ -43,7 +42,7 @@
                     "Entity": "Calculations"
                   }
                 },
-                "Property": "Revenue"
+                "Property": "varfromlyaov"
               }
             },
             "direction": "Descending"
@@ -54,20 +53,6 @@
     },
     "objects": {
       "value": [
-        {
-          "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "25D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Calculations.Revenue"
-          }
-        },
         {
           "properties": {
             "fontSize": {
@@ -95,6 +80,48 @@
           "selector": {
             "id": "default"
           }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "textWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Calculations.varfromlyaov"
+          }
         }
       ],
       "layout": [
@@ -107,6 +134,84 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'belowValue'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Calculations.varfromlyaov"
+          }
+        }
+      ],
+      "accentBar": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Calculations.varfromlyaov"
+          }
+        }
+      ],
+      "shadowCustom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Calculations.varfromlyaov"
+          }
+        }
+      ],
+      "glowCustom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Calculations.varfromlyaov"
           }
         }
       ]
@@ -183,6 +288,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

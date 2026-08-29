@@ -182,16 +182,6 @@
                 }
               ],
               "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "2012L"
-                  }
-                }
-              ],
-              "isToggled": true
             }
           ]
         }

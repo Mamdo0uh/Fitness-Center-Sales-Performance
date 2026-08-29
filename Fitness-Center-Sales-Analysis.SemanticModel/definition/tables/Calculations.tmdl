@@ -515,6 +515,33 @@ table Calculations
 		displayFolder: Time Analysis Measures
 		lineageTag: 6bad5fd2-7968-45df-bdb5-570b15777f66
 
+	measure Aovly = CALCULATE([AOV], SAMEPERIODLASTYEAR('Calendar'[Date]))
+		lineageTag: a18db618-47f6-4f71-a3b1-6e341bc13ada
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure #customersly = CALCULATE([#Customers], SAMEPERIODLASTYEAR('Calendar'[Date]))
+		formatString: 0
+		lineageTag: 6d020cfc-1616-4783-9f03-4ee7472c54b4
+
+	measure #ordersly = CALCULATE([#Orders], SAMEPERIODLASTYEAR('Calendar'[Date]))
+		formatString: 0
+		lineageTag: 8d708775-0575-4591-8994-7ff9d0fd7a02
+
+	measure varfromlyaov = [AOV] - [Aovly]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 9c75efda-f07e-4706-ba37-7c097a5ad6a2
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure varfromly#customers = [#Customers] - [#customersly]
+		formatString: 0
+		lineageTag: f530bbd0-61de-4d97-9772-dc8351e0fdc0
+
+	measure varfromly#orders = [#Orders] - [#ordersly]
+		formatString: 0
+		lineageTag: 7f126776-7f5b-45f6-8623-4aa9364200aa
+
 	column Column1
 		dataType: string
 		isHidden

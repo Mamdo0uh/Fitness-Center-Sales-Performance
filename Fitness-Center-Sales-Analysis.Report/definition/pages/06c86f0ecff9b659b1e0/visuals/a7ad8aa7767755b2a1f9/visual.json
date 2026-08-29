@@ -122,6 +122,20 @@
                   "Value": "false"
                 }
               }
+            },
+            "gridlineAutoScale": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "gridlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'dotted'"
+                }
+              }
             }
           }
         }
@@ -133,6 +147,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'TopCenter'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "lineChartType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'smooth'"
                 }
               }
             }
