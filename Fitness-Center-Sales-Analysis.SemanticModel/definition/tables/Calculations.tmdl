@@ -542,6 +542,28 @@ table Calculations
 		formatString: 0
 		lineageTag: 7f126776-7f5b-45f6-8623-4aa9364200aa
 
+	measure 'ARROW Color (revenue)' = IF([Varfromly(Revenue)] > 0, 1, 2)
+		formatString: 0
+		lineageTag: 4efca2da-08ee-4883-9d99-4c4ca35e0a5b
+
+	measure 'Top Achiver(Revenue)' =
+			
+			IF (
+			    RANKX ( ALL ( Customers[Customer] ), [Revenue], , DESC, DENSE ) <= 'Top_Customers'[Top_Customers Value],
+			    [Revenue]
+			)
+		lineageTag: 710c5d4f-4f0c-42fc-af18-f02e67d9885c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Location Title' =
+			
+			VAR SelectedCountry = SELECTEDVALUE ( Customers[CountryName], "All Countries" )
+			VAR SelectedYear = SELECTEDVALUE ( 'Calendar'[year], "All Years" )
+			RETURN
+			    "Details for " & SelectedCountry & " in " & SelectedYear
+		lineageTag: d1df65b7-1946-420f-a06b-da252a6d6da5
+
 	column Column1
 		dataType: string
 		isHidden

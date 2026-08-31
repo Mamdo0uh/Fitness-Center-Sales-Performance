@@ -26,6 +26,7 @@ ref table LocalDateTable_5da4c00d-bfc6-4ff8-9dc4-d58178fa47ee
 ref table Calculations
 ref table 'Return_Measures '
 ref table 'TIME ANALYSIS'
+ref table Top_Customers
 
 ref cultureInfo en-US
 

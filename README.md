@@ -17,3 +17,7 @@
 <p align="center">
   <img src="assets/product_analysis.png" width="100%" />
 </p>
+
+<p align="center">
+  <img src="assets/location_analysis.png" width="100%" />
+</p>
